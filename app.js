@@ -30,7 +30,15 @@ mongoose.connect(localDb,{useNewUrlPArser:true,useUnifiedTopology:true})
 })
 
 const User = require('./models/User')
+const Task = require('./models/Task')
 
+function isLoggedIn(req,res,next){
+    if(req.session.isLoggedIn){
+        next()
+    }else{
+        res.redirect('/login')
+    }
+}
 app.get('/signup',(req,res)=>{
     res.render('signup')
 })
@@ -91,6 +99,35 @@ app.post('/login',(req,res)=>{
         }
     })
 })
-app.get('/tasks',(req,res)=>{
-    res.render('tasks')
+app.get('/tasks',isLoggedIn,(req,res)=>{
+    let searchInput = req.query.searchInput
+    Task.find({user_id : req.session.user_id})
+    .then((tasks)=>{
+        res.render('tasks',{tasks : tasks})
+    })
+})
+app.post('/tasks',isLoggedIn,(req,res)=>{
+    let {type} = req.body
+    if(type == 'add-task'){
+       let new_task = new Task({
+            ...req.body,
+            user_id : req.session.user_id
+    }) 
+       new_task.save()
+       .then(()=>{
+            res.json({
+                status : true
+            })
+       })
+       .catch((err)=>{
+            res.json({
+                error : err
+            })
+       })
+    }
+})
+
+app.get('/logout',isLoggedIn,(req,res)=>{
+    req.session.destroy()
+    res.redirect('login')
 })
