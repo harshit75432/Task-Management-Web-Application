@@ -1,9 +1,11 @@
 let deleteBtn = document.querySelectorAll('.delete')
 
 deleteBtn.forEach((btn)=>{
+   
     btn.onclick=()=>{
         let id = btn.id.split('-')[1]
-        xhr.open("", '', true);
+        const xhr = new XMLHttpRequest();
+        xhr.open("DELETE", `/tasks/${id}`, true);
     
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         
@@ -15,11 +17,7 @@ deleteBtn.forEach((btn)=>{
                }
             }
         }
-    
-        let json = JSON.stringify({
-           type : 'delete',
-       });
       
-        xhr.send(json);
+        xhr.send();
     }
 })

@@ -1,0 +1,45 @@
+<%-include('./partials/head')%>
+<body style="background-color: 	#f7f2f2;" >
+    <div class="overflow-hidden">
+        <%-include('./partials/navbar')%>
+
+        <div class="container">
+            <div class=" d-flex justify-content-center align-items-center mt-5">
+                <form id="update-form" method="post"  data-task_id="<%= task_detail._id %>">
+                    <div class="d-flex flex-column p-5" style=" width: 460px; background-color: white;">
+                        <h4 class="text-center mb-5">Edit Task</h4>
+                        <span>Title*</span>
+                        <input id="title"  value="<%= task_detail.title %>" placeholder="Title" class="form-control mt-2 mb-3" type="text" required>
+                        <span class="mt-2">Description*</span>
+                        <textarea id="description" placeholder="Description" class="form-control mt-2 mb-3"  required><%= task_detail.description %></textarea>
+                        <span class="mt-2">Status*</span>
+                        <select id="status" class="form-select mt-2 mb-3" aria-label="Default select example" required>
+                            <option disabled selected>Select your current task status</option>
+                            <option <%= task_detail.task_status == 'Incomplete' && 'selected' %> value="Incomplete">Incomplete</option>
+                            <option <%= task_detail.task_status == 'Completed' && 'selected' %> value="Completed">Completed</option>
+                        </select>
+                        <div class="d-flex justify-content-between mt-3">
+                            <div class="d-flex flex-column">
+                                <span>Start Date*</span>
+                                <input id="start-date" class="form-control mt-2" value="<%= task_detail.start_date %>" type="date" required>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <span>End Date*</span>
+                                <input id="end-date" class="form-control mt-2" value="<%= task_detail.end_date %>" type="date" required>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mt-4 justify-content-end">
+                            <a href="/tasks" class="btn btn-dark">Back</a>
+                            <button type="submit" class="ms-3 btn btn-success">Update</button>
+                        </div>
+                        
+                    </div>
+                </form>
+                </div>            
+        </div>
+        <script src="/js/updatetask.js" ></script> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </div>     
+</body>
+</html>

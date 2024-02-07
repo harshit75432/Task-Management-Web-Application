@@ -149,7 +149,7 @@
   .flexcardPink {
     background: #fffafd;
     position: relative;
-      box-shadow: 2px 2px 1px #F34EAE ;
+      box-shadow: 2px 2px 1px rgba(26, 63, 213, 0.414) ;
       border-radius: 20px 20px 0px 20px;
   }
   .flexcardPink:before {
@@ -161,22 +161,22 @@
       bottom: 0;
       right: 0;
       border-left: 100px solid transparent;
-      border-bottom: 90px solid #F34EAE;
+      border-bottom: 90px solid rgba(26, 63, 213, 0.414);
   }
   .flexcardNumberPink {
     background: #FDFFFE;
-    background: -webkit-linear-gradient(right, #FDFFFE, #F34EAE);
-    background: -moz-linear-gradient(right, #FDFFFE, #F34EAE);
-    background: linear-gradient(to left, #FDFFFE, #F34EAE);
-    box-shadow: 0px 2px 2px #F34EAE;
+    background: -webkit-linear-gradient(right, #FDFFFE, rgba(26, 63, 213, 0.414));
+    background: -moz-linear-gradient(right, #FDFFFE, rgba(26, 63, 213, 0.414));
+    background: linear-gradient(to left, #FDFFFE, rgba(26, 63, 213, 0.414));
+    box-shadow: 0px 2px 2px rgba(26, 63, 213, 0.414);
   }
   
   .flexcardNumberPink:before {
-    background: #F34EAE;
+    background: rgba(26, 63, 213, 0.414);
   }
   
   .flexcardNumberPink:after {
-    background: #d24095;
+    background: rgba(26, 63, 213, 0.414);
   }
   
   /* RESPONSİVE */
